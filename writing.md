@@ -40,16 +40,28 @@ first two line of Translation is function with Translation. They both what every
 Show and explain examples of DRY programming in this assigment and
 where appropriate indicate what a WET version might look like.
 
+DRY (Don't Repeat Yourself) programming is to reduce the code repetition by 
+modularising the code (so that each method only do specific simple task) so 
+we can reuse the code. 
 
-There is an example in FrequencyDocumentReader shown that is dry programing. The mena idea of dry programming is 
-avoiding duplication and promoting code reuse. So, in code of FrequencyDocumentReader it mainly have function which read 
-the document. This code reads a document file then use FrequencyReaderConfig to process the words which is inputted
-in file. It converts DEFAULT_NON_WORD_CHARS which remove non-word characters and normalise word. Then store it in to 
-hashmap, then it process word as todo requirement. In general, there are three function FrequencyReaderConfig which can 
-get verbosity for words, Normaliser which remove non-word characters and normalise word, Verbosity can check verbosity. 
-By using this function it avoid defined each function in three default settings. 
-So in this wet version it duplicates same purpose code which have basic same functionality with Normaliser, 
-FrequencyReaderConfig, Verbosity. It reuses similar code to get default for words.
+The `FrequencyWord` class is an example. The `normalise()`, `comparedTo()` and 
+`toString()` methods are all doing specific and simple task which is reused 
+in classes such as `DataScientist` and `FrequencyDocumentReader`.
+
+The use of inheritance in `FrequencyDocumentPG` class is DRY programming. By 
+inheriting from `FrequencyDocument` class, methods are being reused, some 
+examples are the `setNonWordChars` and `readDocument` methods.
+
+In the assignment, the widely used of constructors, such as 
+`FrequencyDocument()` and `FrequencyWord(String word)`, and the use of 
+constant variables, such as the `DEFAULT_WORD_STATS_PATTERN` and the 
+`DEFAULT_NON_WORD_CHARS`, contributed to the DRY codes in this assignment.
+
+However, I spotted a WET programming in the assignment in `DataScientist`. 
+Observed that the `experiment1Phase1()` and the `experiment2Phase1()` have 
+the same logic, hence the code is repetitive. There are more repetitive 
+parts in this class. We can improve by use for each loop to build the 
+same structure.
 
 ## Relationships ##
 
